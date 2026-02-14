@@ -9,12 +9,15 @@
     in
       pkgs.mkShell {
         buildInputs = with pkgs; [
+          gcc
           jdk21
+          maven
           spring-boot-cli
         ];
         shellHook = ''
           echo ""
           echo "Java version: $(java -version 2>&1 | head -n 1)"
+          echo "Maven version: $(mvn -version | head -n 1)"
           echo "Spring Boot CLI: $(spring --version)"
           echo ""
         '';
